@@ -19,21 +19,20 @@ export const addConvo = async (req,res)=>{
         await newConvo.save();
         return res.status(200).json("Conversation saved successfully");
     }catch(error){
-        return res.status(500).json("Error while saving conversations",error.message);
+        return res.status(500).json(error);
     }
 }
 
 
 export const getConvo =  async (req,res)=>{
     try{
-
         const sender_userID = req.body.senderId;
-        const reciever_userID = req.body.recieverId;
+        const reciever_userID = req.body.receiverId;
 
-        let conversation = await Convo.findOne({members:{$all:[reciever_userID,sender_userID]}});
-        return res.status(200).json(conversation);
+        let convoData = await Convo.findOne({members:{$all:[reciever_userID,sender_userID]}});
+        res.status(200).json(convoData);
 
     }catch(error){
-        return res.status(500).json("Error while fetching conversations from DB",error.message);
+        res.status(500).json(error);
     }
 }
