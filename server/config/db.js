@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const Connection = async (USERNAME,PASSWORD)=>{
     
-    const URL = `mongodb://${USERNAME}:${PASSWORD}@ac-enwivqh-shard-00-00.wneo4pp.mongodb.net:27017,ac-enwivqh-shard-00-01.wneo4pp.mongodb.net:27017,ac-enwivqh-shard-00-02.wneo4pp.mongodb.net:27017/?ssl=true&replicaSet=atlas-udsj8w-shard-0&authSource=admin&retryWrites=true&w=majority`
+    const URL = `mongodb://${USERNAME}:${PASSWORD}@ac-enwivqh-shard-00-00.wneo4pp.mongodb.net:27017,ac-enwivqh-shard-00-01.wneo4pp.mongodb.net:27017,ac-enwivqh-shard-00-02.wneo4pp.mongodb.net:27017/?ssl=true&replicaSet=atlas-udsj8w-shard-0&authSource=admin&retryWrites=true&w=majority`;
 
     try{
         await mongoose.connect(URL,{useUnifiedTopology:true});
